@@ -18,7 +18,7 @@ html {
 
 body {
   background:
-    radial-gradient(circle at top, rgba(217, 167, 108, 0.18), transparent 30%),
+    radial-gradient(circle at top, rgba(217, 167, 108, 0.18), transparent 28%),
     radial-gradient(circle at bottom right, rgba(136, 88, 58, 0.12), transparent 30%),
     var(--background);
   color: var(--foreground);
@@ -29,9 +29,19 @@ body {
   box-sizing: border-box;
 }
 
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
 img {
   display: block;
   max-width: 100%;
+}
+
+::selection {
+  background: rgba(217, 167, 108, 0.35);
+  color: #f8f2e8;
 }
 
 @layer utilities {
@@ -39,15 +49,20 @@ img {
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
-  .glass-panel {
-    @apply border border-white/10 bg-white/5 shadow-[0_24px_80px_rgba(0,0,0,0.25)] backdrop-blur-md;
+  .display-serif {
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full border border-[#d9a76c]/30 bg-[#d9a76c]/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#f0c58d];
-  }
-
-  .section-heading {
-    @apply text-3xl font-semibold tracking-[-0.05em] text-stone-50 sm:text-4xl lg:text-5xl;
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
